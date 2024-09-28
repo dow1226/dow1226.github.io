@@ -8,10 +8,15 @@
     <loc>https://examplesite.com/posts/</loc>
     <lastmod>2024-09-28T16:13:31+08:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/archives/</loc>
+    <loc>https://examplesite.com/tags/first/</loc>
+    <lastmod>2020-09-15T11:30:03+00:00</lastmod>
   </url><url>
-    <loc>https://examplesite.com/categories/</loc>
+    <loc>https://examplesite.com/post/</loc>
+    <lastmod>2020-09-15T11:30:03+00:00</lastmod>
   </url><url>
     <loc>https://examplesite.com/tags/</loc>
+    <lastmod>2020-09-15T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://examplesite.com/categories/</loc>
   </url>
 </urlset>
