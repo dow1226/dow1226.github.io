@@ -4,18 +4,24 @@
 
   <url>
     <loc>https://dow1226.github.io/</loc>
-    <lastmod>2024-09-30T23:50:30+08:00</lastmod>
+    <lastmod>2024-10-01T21:28:26+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://dow1226.github.io/posts/helloworld/</loc>
-    <lastmod>2024-09-30T23:50:30+08:00</lastmod>
+    <loc>https://dow1226.github.io/posts/markdown/</loc>
+    <lastmod>2024-10-01T21:28:26+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://dow1226.github.io/posts/</loc>
+    <lastmod>2024-10-01T21:28:26+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://dow1226.github.io/posts/helloworld/</loc>
     <lastmod>2024-09-30T23:50:30+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

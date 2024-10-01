@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Dow的Lab</title>
-    <link>https://dow1226.github.io/posts/</link>
-    <description>Recent content in Posts on Dow的Lab</description>
+    <title>Web相關技術 on Dow的Lab</title>
+    <link>https://dow1226.github.io/categories/web%E7%9B%B8%E9%97%9C%E6%8A%80%E8%A1%93/</link>
+    <description>Recent content in Web相關技術 on Dow的Lab</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <managingEditor>dow1226@gmail.com (Dow)</managingEditor>
     <webMaster>dow1226@gmail.com (Dow)</webMaster>
     <copyright>Copy Right By Dow</copyright>
-    <lastBuildDate>Tue, 01 Oct 2024 21:28:26 +0800</lastBuildDate><atom:link href="https://dow1226.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Oct 2024 21:28:26 +0800</lastBuildDate><atom:link href="https://dow1226.github.io/categories/web%E7%9B%B8%E9%97%9C%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown語法筆記</title>
       <link>https://dow1226.github.io/posts/markdown/</link>
@@ -17,16 +17,6 @@
       <author>dow1226@gmail.com (Dow)</author>
       <guid>https://dow1226.github.io/posts/markdown/</guid>
       <description>Markdown語法筆記</description>
-      
-    </item>
-    
-    <item>
-      <title>Helloworld</title>
-      <link>https://dow1226.github.io/posts/helloworld/</link>
-      <pubDate>Mon, 30 Sep 2024 23:50:30 +0800</pubDate>
-      <author>dow1226@gmail.com (Dow)</author>
-      <guid>https://dow1226.github.io/posts/helloworld/</guid>
-      <description>Hello World</description>
       
     </item>
     
