@@ -9,10 +9,10 @@
         <copyright>Dow</copyright>
         <lastBuildDate>Mon, 09 Dec 2024 14:11:48 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>DockerAttach</title>
-        <link>https://dow1226.github.io/p/dockerattach/</link>
+        <link>https://dow1226.github.io/dockerattach/</link>
         <pubDate>Mon, 09 Dec 2024 14:11:48 +0000</pubDate>
         
-        <guid>https://dow1226.github.io/p/dockerattach/</guid>
+        <guid>https://dow1226.github.io/dockerattach/</guid>
         <description>&lt;p&gt;在homelab中常常跟著教學架了一些Docker容器，但又不求甚解。
 所以實際應用上常會莫名其妙就吃鱉或踩坑，這次也是常踩到的坑之一，特別記錄一下。&lt;/p&gt;
 &lt;h1 id=&#34;進入容器&#34;&gt;進入容器
