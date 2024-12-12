@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <copyright>Dow</copyright>
-        <lastBuildDate>Mon, 09 Dec 2024 14:11:48 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Dec 2024 15:09:05 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Network</title>
+        <link>https://dow1226.github.io/categories/network/</link>
+        <pubDate>Thu, 12 Dec 2024 15:09:05 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/categories/network/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Docker</title>
         <link>https://dow1226.github.io/categories/docker/</link>
         <pubDate>Mon, 09 Dec 2024 14:11:48 +0000</pubDate>

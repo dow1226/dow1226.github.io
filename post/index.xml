@@ -7,7 +7,198 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <copyright>Dow</copyright>
-        <lastBuildDate>Mon, 09 Dec 2024 14:11:48 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Dec 2024 15:09:05 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>OBS直播設定調整選項</title>
+        <link>https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/</link>
+        <pubDate>Thu, 12 Dec 2024 15:09:05 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/capsule_616x353.jpg&#34;
+	width=&#34;616&#34;
+	height=&#34;353&#34;
+	srcset=&#34;https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/capsule_616x353_hu0d8c49ac3aebc32cb42144110ac28fc0_26070_480x0_resize_q75_box.jpg 480w, https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/capsule_616x353_hu0d8c49ac3aebc32cb42144110ac28fc0_26070_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;174&#34;
+		data-flex-basis=&#34;418px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因為工作中遇到有user反應直播卡頓，在協助處理時，查到一些資料，先筆記下來，感覺未來需要用到的機率挺高的。&lt;br&gt;
+參考資料來源 &lt;a class=&#34;link&#34; href=&#34;https://www.movavi.com/zh/learning-portal/best-obs-settings-for-recording.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.movavi.com/zh/learning-portal/best-obs-settings-for-recording.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;推薦設定&#34;&gt;推薦設定
+&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;參數&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;推薦設定&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;基礎解析度&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1920 × 1080 螢幕的大小，以 1080p 進行「全螢幕」擷取。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;輸出解析度&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;依照直播平台做調整&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;常見的FPS&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;60 FPS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;降級濾鏡&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Bicubic&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;錄製格式&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;MP4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;位元速率&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16,000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;預設值&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;MaxQuality&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;速率控制&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;CBR&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;編碼器&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;X264&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;程式優先順序&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;高於正常水準&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;演色器&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Direct3D 11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;色彩格式&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NV12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;色彩空間&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;709&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;色彩範圍&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;全&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;obs推薦的影片位元速率&#34;&gt;OBS推薦的影片位元速率
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;品質&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;輸出畫質&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;影片位元速率&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;超高清&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4K&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;8000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;高清&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1920 x 1080 (1080P)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3000/5000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;高清&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1280 x 720 (720P)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1800/2500&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;中等畫質&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;640 x 360 (360P)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;600/800&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;影片位元速率越高越好，但也要根據實際使用的情況做調整。&lt;br&gt;
+過高的速率只會浪費網路頻寬，在即時串流的情境，720P - 1080P 其實就很夠用了。&lt;/p&gt;
+&lt;h2 id=&#34;音訊位元速率&#34;&gt;音訊位元速率
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;品質&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;音訊位元速率&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;高品質&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;320&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;高品質&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;256&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;中等品質&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;128&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;一些術語筆記&#34;&gt;一些術語筆記
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;基礎解析度&lt;/strong&gt;: 畫面解析度由&lt;strong&gt;寬度 x 高度&lt;/strong&gt;決定。標準的24吋螢幕顯示的畫面大小即為 1920 x 1080，全螢幕擷取時，最適用的畫質即為 1080p HD。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;輸出解析度&lt;/strong&gt;: 輸出解析度不一定要跟基礎解析度相同。簡單說，基礎解析度指的是 OBS所看到的畫面，在本機存儲，使用情境可能是畫面錄影或是剪輯影片。而輸出解析度則為輸出到串流平台所使用的畫質，輸出解析度設定要與平台要求相容，否則輸出品質會被影響。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;降級濾鏡&lt;/strong&gt;: 當輸出解析度比基礎解析度低時，影片需要降級才能因應輸出設定的條件，透過這個濾鏡功能來達成。最高品質的功能為 &lt;strong&gt;Lanczos&lt;/strong&gt;。但不是每個電腦都適用，建議使用 &lt;strong&gt;Bicubic&lt;/strong&gt;，相容性較高。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;電腦需求&#34;&gt;電腦需求
+&lt;/h1&gt;&lt;p&gt;基本的直播串流電腦硬體需求:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU: Intel Core i5 以上&lt;/li&gt;
+&lt;li&gt;最好有獨立顯卡，OBS跟 Nvida相容性較佳&lt;/li&gt;
+&lt;li&gt;RAM: 至少 8GB以上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;串流設定&#34;&gt;串流設定
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/%E8%A8%AD%E5%AE%9A.jpg&#34;
+	width=&#34;720&#34;
+	height=&#34;333&#34;
+	srcset=&#34;https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/%E8%A8%AD%E5%AE%9A_hu8460136801f09d447716ffb5f2ccdd2f_46480_480x0_resize_q75_box.jpg 480w, https://dow1226.github.io/obs%E7%9B%B4%E6%92%AD%E8%A8%AD%E5%AE%9A%E8%AA%BF%E6%95%B4%E9%81%B8%E9%A0%85/%E8%A8%AD%E5%AE%9A_hu8460136801f09d447716ffb5f2ccdd2f_46480_1024x0_resize_q75_box.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;518px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;輸出模式&lt;/strong&gt;: 選擇進階，開啟串流設定選項&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;音軌&lt;/strong&gt;: 預設選擇1&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;編碼器&lt;/strong&gt;: 軟體編碼為 x264，若電腦有獨立顯卡可選擇硬體編碼 H.264，軟體編碼使用的是CPU資源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;位元率&lt;/strong&gt;: 選擇 CBR 控制，影像位元率建議設定為 4000Kbps (4mbps)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;影像位元率&lt;/strong&gt;: 直播串流的流量，取決於網路頻寬速度。但不是越高越好，否則會出現掉禎或延遲嚴重的問題，且各家串流平台的上限不同。FB建議最高不超過 9000Kbps。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;位元速率與網路速度之關係&#34;&gt;位元速率與網路速度之關係
+&lt;/h1&gt;&lt;p&gt;這是工作遇到主要的問題，USER認為直播會卡的原因為網路不夠快。&lt;br&gt;
+但實際上直播所使用的網路速度要求並不高，以 Youtube 的解析度說明而言， 4K/2160p 最高位元率為 40Mbps，網速只要達到 40M以上就能支援播放影片。&lt;br&gt;
+但一般情況下，即時直播不建議使用到4K畫質，1440P就能有相當不錯的效果，且各家平台推薦的解析度大多是介於720P ~ 1080P之間，網路要求甚至不到10M。
+另外直播延遲時間也有影響，低延遲的設定下，各家平台皆不支援4K解析度的輸出，即便平台會自行做輸出調整，但呈現出來的結果就不一定是USER能接受的樣子囉。&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以現在人人都是自媒體的時代，直播串流已經非常簡單了，一般情況下軟體自動設定就足夠了。網路的要求其實也非常低，如果硬體都沒問題的情況下，直播連放都放不出來，那樣的網路環境相信是連開個網頁都有問題，但相信這樣的網路環境已經不常見啦。&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>DockerAttach</title>
         <link>https://dow1226.github.io/dockerattach/</link>
         <pubDate>Mon, 09 Dec 2024 14:11:48 +0000</pubDate>
