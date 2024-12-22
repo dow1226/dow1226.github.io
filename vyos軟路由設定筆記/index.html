@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Homelab軟路由筆記">
+<title>VyOS軟路由設定筆記</title>
+
+<link rel='canonical' href='https://dow1226.github.io/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="VyOS軟路由設定筆記">
+<meta property='og:description' content="Homelab軟路由筆記">
+<meta property='og:url' content='https://dow1226.github.io/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/'>
+<meta property='og:site_name' content='DowBlog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='vyos' /><meta property='article:tag' content='homelab' /><meta property='article:published_time' content='2024-12-22T08:06:58&#43;00:00'/><meta property='article:modified_time' content='2024-12-22T08:06:58&#43;00:00'/>
+<meta name="twitter:title" content="VyOS軟路由設定筆記">
+<meta name="twitter:description" content="Homelab軟路由筆記">
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/images_hu9b3dee178222d3539d3bf7c8d145c464_14849_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">DowBlog</a></h1>
+            <h2 class="site-description">DowBlog</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/dow1226'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:dow1226@gmail.com'
+                        target="_blank"
+                        title="mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>夜晚模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a>
+      <ol>
+        <li><a href="#極度折騰的軟路由選擇">極度折騰的軟路由選擇</a></li>
+      </ol>
+    </li>
+    <li><a href="#前置作業">前置作業</a>
+      <ol>
+        <li><a href="#vm配置">VM配置</a></li>
+      </ol>
+    </li>
+    <li><a href="#安裝">安裝</a></li>
+    <li><a href="#配置">配置</a>
+      <ol>
+        <li><a href="#基本系統設定">基本系統設定</a></li>
+        <li><a href="#ip設定">IP設定</a></li>
+        <li><a href="#一些服務設定">一些服務設定</a></li>
+        <li><a href="#nat">NAT</a></li>
+      </ol>
+    </li>
+    <li><a href="#總結">總結</a>
+      <ol>
+        <li><a href="#參考內容-感謝網路上的各路大神">參考內容 感謝網路上的各路大神</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/homelab/" >
+                Homelab
+            </a>
+        
+            <a href="/categories/layer3/" >
+                Layer3
+            </a>
+        
+            <a href="/categories/vyos/" >
+                Vyos
+            </a>
+        
+            <a href="/categories/%E6%8A%98%E9%A8%B0%E6%97%A5/" >
+                折騰日
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/">VyOS軟路由設定筆記</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Homelab軟路由筆記
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 22, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 3 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><img src="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/vyos.jpg"
+	width="500"
+	height="233"
+	srcset="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/vyos_hue068d295ba2ee246f02bd0f713fdec3f_18318_480x0_resize_q75_box.jpg 480w, /vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/vyos_hue068d295ba2ee246f02bd0f713fdec3f_18318_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="214"
+		data-flex-basis="515px"
+	
+></p>
+<h1 id="前言">前言
+</h1><p>會開始本次的折騰主要原因是我的 Homelab 中，擔任主要 Router 的工控主機效能好像很不怎麼樣，想在家裡做 Vlan Routing 呀或是 實踐 DMZ 管控呀之類的，都會有高機率看到它 CPU 突然飆高甚至死機。<br>
+在好幾次變磚頭的折騰後，我決定 Let it be.<br>
+讓它專注做好 Router 的角色，把內網的 L3 Routing 的工作交給我的 NCU 主機。</p>
+<h2 id="極度折騰的軟路由選擇">極度折騰的軟路由選擇
+</h2><p>最一開始的想法很單純，想說單純把 PVE 上的 VM 網路跟平常使用的網路分開來，做簡單的 Vlan Routing 就好。<br>
+原以為可以順便學習一下 PVE 的 SDN 功能，但實踐上沒想像中的簡單，所以還是決定架設一台虛擬的 Router 最為直觀。<br>
+選擇 VyOS 也沒啥特別的理由，就只是聽說它是 <code>Cisco Like CLI</code>，設定邏輯應該比較好掌握。</p>
+<h1 id="前置作業">前置作業
+</h1><p><a class="link" href="https://vyos.io/"  target="_blank" rel="noopener"
+    >VyOS</a> 是 Open-Source 的開源系統，但對免費用戶僅提供 Rolling Release 版本(或稱為 <code>nightly build</code> 也就是每日都會更新的意思非長期穩定版)。<br>
+不過使用上好像不會因此而有不穩定的狀態，所以就看個人取向選個最新的版本吧。</p>
+<h2 id="vm配置">VM配置
+</h2><p>每一次看網路教學文都不會看到架一個服務具體來說到底要多少資源 <del>嘖</del><br>
+但 VyOS 的官網上有說明最低配置需求:</p>
+<ul>
+<li>最小配置需求
+<ul>
+<li>64-bit CPU</li>
+<li>512 MB of RAM</li>
+<li>2 GB Disk space</li>
+</ul>
+</li>
+<li>建議配置需求
+<ul>
+<li>1024 MiB RAM</li>
+<li>4 GB Storage space</li>
+</ul>
+</li>
+</ul>
+<p>資源需求很低，對於 Homelab 來說用最低配置就行了，如果有其他配置要求，可以去官網查看其他建議值。</p>
+<h1 id="安裝">安裝
+</h1><p>使用下載的 ISO 檔開機後，會出現 Boot Menu，並在系統 loading 後出現登入畫面</p>
+<p><img src="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image.png"
+	width="842"
+	height="626"
+	srcset="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image_hua81d9af3ca1d39fe3b42a2a145d4ec9a_93209_480x0_resize_box_3.png 480w, /vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image_hua81d9af3ca1d39fe3b42a2a145d4ec9a_93209_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Boot Menu"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="134"
+		data-flex-basis="322px"
+	
+>
+<img src="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image-1.png"
+	width="1133"
+	height="626"
+	srcset="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image-1_hu81229833bfc6e415bbbbaa3e0ba09e5e_202291_480x0_resize_box_3.png 480w, /vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image-1_hu81229833bfc6e415bbbbaa3e0ba09e5e_202291_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="登入畫面"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="180"
+		data-flex-basis="434px"
+	
+></p>
+<p>預設的登入帳號 <code>vyos</code> 密碼 <code>vyos</code><br>
+登入後輸入 <code>install image</code> 開始安裝系統，按照提示輸入對應選項即可完成安裝。安裝完成後，重新啟動即可<br>
+<img src="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image-2.png"
+	width="1145"
+	height="632"
+	srcset="/vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image-2_hu86024d78936ae228f45a3065d9e23703_181197_480x0_resize_box_3.png 480w, /vyos%E8%BB%9F%E8%B7%AF%E7%94%B1%E8%A8%AD%E5%AE%9A%E7%AD%86%E8%A8%98/image-2_hu86024d78936ae228f45a3065d9e23703_181197_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="181"
+		data-flex-basis="434px"
+	
+></p>
+<h1 id="配置">配置
+</h1><p>VyOS 的配置指令和 Cisco 類似 <del>(嚴格來說是跟 Nexus類似，現在的 Cisco IOS越來越詭異了)</del> ，一樣是要先進入 <code>configure</code> 模式，以 <code>set</code> 和 <code>delete</code> 來做新增或移除設定。針對於服務或是群組設定則是用 <code>edit</code> 進入下一層編輯，<code>top</code> 指令則為回到頂層。<br>
+按 <code>TAB</code> 可以補全指令，按 <code>?</code> 可以顯示可選的指令有哪些，當設定結束後需要先 <code>commit</code> 再執行 <code>save</code> 儲存設定。</p>
+<h2 id="基本系統設定">基本系統設定
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 設定 hostname</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> system host-name &lt;hostname&gt;
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定系統時區</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> system time-zone Asia/Taipei
+</span></span><span class="line"><span class="cl"><span class="c1"># 建立新的使用者</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> system login user &lt;user&gt; authentication plaintext-password &lt;password&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ip設定">IP設定
+</h2><p>VyOS 的 Interface 命名方式為 <code>eth0</code> <code>eth1</code> <code>eth2</code> &hellip; 以此類推，在 proxmox 的 VM 上會按照硬體選項的順序對應之，但為了避免有誤，建議先查看 <code>ip add</code> 確定網卡的 MAC 跟預想的是不是一致。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl"><span class="c1"># 設定 wan 口網路 可為 DHCP 或 靜態IP</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> interface ethernet &lt;wan port&gt; address &lt;dhcp / static ip&gt;
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定 lan 口網路 這邊設的就是內網連到 VyOS的IP 也就是內網的Gateway </span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> interface ethernet &lt;lan port&gt; address &lt;dhcp / static ip&gt;
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定 default gateway 如果wan口配置 dhcp 則不用設這項</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> protocols static route 0.0.0.0/0 next-hop 192.168.0.1 <span class="c1">#中華電信小烏龜預設IP</span>
+</span></span><span class="line"><span class="cl">commit <span class="c1">#啟用設定</span>
+</span></span><span class="line"><span class="cl">save <span class="c1">#保存設定</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="一些服務設定">一些服務設定
+</h2><p><strong>SSH</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> service ssh port <span class="m">22</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># set service ssh acl permit &#39;10.0.0.0/8&#39; # 配置 ssh 的 ACL</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 看自己要不要折騰 還有好多可選配置</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>DHCP</strong>
+這邊剛好可以說明一下 <code>edit</code> 指令的用法<br>
+在不用 <code>edit</code> 時配置 DHCP</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">configure 
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> service dhcp-server shared-network-name eth1 authoritative <span class="c1"># 設定為主要DHCP SERVER</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> service dhcp-server shared-network-name eth1 subnet 192.168.2.0/24 default-router 192.168.2.1 <span class="c1"># 設定 DHCP 配發預設GW </span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> service dhcp-server shared-network-name eth1 subnet 192.168.2.0/24 lease <span class="m">86400</span> <span class="c1"># 設定DHCP lease time</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> service dhcp-server shared-network-name eth1 subnet 192.168.2.0/24 name-server 8.8.8.8 <span class="c1"># 設定 DHCP 配發DNS</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> service dhcp-server shared-network-name eth1 subnet 192.168.2.0/24 range <span class="m">0</span> start 192.168.2.2 <span class="c1"># DHCP 配發IP範圍 range指的是可配發的IP區段 從0開始</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> service dhcp-server shared-network-name eth1 subnet 192.168.2.0/24 range <span class="m">0</span> stop 192.168.2.10 <span class="c1"># 區段IP 最後位置</span>
+</span></span><span class="line"><span class="cl">commit 
+</span></span><span class="line"><span class="cl">save 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用 <code>edit</code> 配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 進入dhcp設定層級</span>
+</span></span><span class="line"><span class="cl">edit service dhcp-server shared-network-name &lt;text&gt; subnet &lt;192.168.2.0/24&gt;
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定gateway</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> option default-router &lt;192.168.2.1&gt; 
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定dns</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> option name-server 1.1.1.1
+</span></span><span class="line"><span class="cl"><span class="c1"># dhcp租約時間(秒)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> lease <span class="m">86400</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 設定dhcp ip pool</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> range <span class="m">0</span> start 192.168.2.2
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> range <span class="m">0</span> stop 192.168.2.10
+</span></span><span class="line"><span class="cl"><span class="c1"># subnet id ，不重複即可</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> subnet-id <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>看起來 <code>edit</code> 的使用情境類似於 <code>物件導向</code> 的設定，不過選擇哪個就見仁見智了<br>
+例如 Cisco ACL 教學時都推薦用 extend 作規則命名，但實務上我有經手過的客戶都還是用 standard ACL 居多，所以不太會動的服務設定就依個人喜好設定吧。</p>
+<h2 id="nat">NAT
+</h2><p><strong>SNAT</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">configure
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat <span class="nb">source</span> rule <span class="m">100</span> outbound-interface eth0 <span class="c1"># 設定 eth0 為NAT的出口端</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat <span class="nb">source</span> rule <span class="m">100</span> <span class="nb">source</span> address 192.168.2.0/24 <span class="c1"># 設定內網網段</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat <span class="nb">source</span> rule <span class="m">100</span> translation address masquerade <span class="c1"># 將內網網段轉譯成NAT出口端IP</span>
+</span></span><span class="line"><span class="cl">commit
+</span></span><span class="line"><span class="cl">save
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>DNAT</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">configure
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat destination rule <span class="m">100</span> inbound-interface eth0 <span class="c1"># 外網流量進入口</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat destination rule <span class="m">100</span> destination address 192.168.1.2 <span class="c1"># 從 eth0 接口訪問 192.168.1.2</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat destination rule <span class="m">100</span> destination port <span class="m">80</span> <span class="c1"># 訪問目的端port 80</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat destination rule <span class="m">100</span> protocol tcp <span class="c1"># 設定使用的傳輸層協定 TCP</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat destination rule <span class="m">100</span> translation address 192.168.2.2 <span class="c1"># 流量映射給192.168.2.2</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> nat destination rule <span class="m">100</span> translation port <span class="m">8080</span> <span class="c1"># 映射port 轉為 192.168.2.2的 8080 port</span>
+</span></span><span class="line"><span class="cl">commit 
+</span></span><span class="line"><span class="cl">save 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="總結">總結
+</h1><p>VyOS 是一種軟路由的解決方案，還具有許多 Router 及 Firewall 的功能。但在我的情境裡只是當作 L3 Routing的角色，所以相關筆記就先暫時紀錄到這裡吧。</p>
+<h2 id="參考內容-感謝網路上的各路大神">參考內容 感謝網路上的各路大神
+</h2><p><a class="link" href="https://www.zenwen.tw/vyos-quick-setup/#%E5%89%8D%E8%A8%80"  target="_blank" rel="noopener"
+    >VyOS快速設定</a><br>
+<a class="link" href="https://yangpin.link/archives/1506.html"  target="_blank" rel="noopener"
+    >【Vyos-开源篇-2】- vyos软路由基本配置</a><br>
+<a class="link" href="https://blog.csdn.net/NOWSHUT/article/details/134781631"  target="_blank" rel="noopener"
+    >安装和初始化 VyOS 虚拟机</a><br>
+<a class="link" href="https://ithelp.ithome.com.tw/articles/10267666"  target="_blank" rel="noopener"
+    >Day 4 - 部署 Home Lab 網路 - 安裝路由器</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/vyos/">Vyos</a>
+        
+            <a href="/tags/homelab/">Homelab</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Dow
+    </section>
+    
+    <section class="powerby">
+        
+            All rights reserved，未經允許不得隨意轉載 <br/>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

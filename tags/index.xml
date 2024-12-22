@@ -7,7 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <copyright>Dow</copyright>
-        <lastBuildDate>Thu, 12 Dec 2024 15:09:05 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 22 Dec 2024 08:06:58 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Homelab</title>
+        <link>https://dow1226.github.io/tags/homelab/</link>
+        <pubDate>Sun, 22 Dec 2024 08:06:58 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/tags/homelab/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Vyos</title>
+        <link>https://dow1226.github.io/tags/vyos/</link>
+        <pubDate>Sun, 22 Dec 2024 08:06:58 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/tags/vyos/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Obs</title>
         <link>https://dow1226.github.io/tags/obs/</link>
         <pubDate>Thu, 12 Dec 2024 15:09:05 +0000</pubDate>

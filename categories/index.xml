@@ -7,7 +7,39 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <copyright>Dow</copyright>
-        <lastBuildDate>Thu, 12 Dec 2024 15:09:05 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 22 Dec 2024 08:06:58 +0000</lastBuildDate><atom:link href="https://dow1226.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Homelab</title>
+        <link>https://dow1226.github.io/categories/homelab/</link>
+        <pubDate>Sun, 22 Dec 2024 08:06:58 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/categories/homelab/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Layer3</title>
+        <link>https://dow1226.github.io/categories/layer3/</link>
+        <pubDate>Sun, 22 Dec 2024 08:06:58 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/categories/layer3/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Vyos</title>
+        <link>https://dow1226.github.io/categories/vyos/</link>
+        <pubDate>Sun, 22 Dec 2024 08:06:58 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/categories/vyos/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>折騰日</title>
+        <link>https://dow1226.github.io/categories/%E6%8A%98%E9%A8%B0%E6%97%A5/</link>
+        <pubDate>Sun, 22 Dec 2024 08:06:58 +0000</pubDate>
+        
+        <guid>https://dow1226.github.io/categories/%E6%8A%98%E9%A8%B0%E6%97%A5/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Network</title>
         <link>https://dow1226.github.io/categories/network/</link>
         <pubDate>Thu, 12 Dec 2024 15:09:05 +0000</pubDate>
